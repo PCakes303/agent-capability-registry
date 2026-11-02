@@ -1,17 +1,20 @@
 # Repository 15 deployment and audit status
 
 **Repository:** [PCakes303/agent-capability-registry](https://github.com/PCakes303/agent-capability-registry)  
-**Audited baseline:** `0220f7ecc89589b9ccd256a705188d7ff27d1371`  
-**Baseline CI:** [Run 41413613566](https://github.com/PCakes303/agent-capability-registry/actions/runs/41413613566) — success  
+**Current code commit:** `dd636dafccad84fcd52e6c8c1e9fc199e38052a1`  
+**Current CI:** [Run 41520820882](https://github.com/PCakes303/agent-capability-registry/actions/runs/41520820882) — success on Python 3.10, 3.11 and 3.12  
+**Product files:** 20  
 **Staging source:** `provisioning/staged/agent-capability-registry/` in the master repository.
 
 ## Current deployment record
 
-The public remote exists and is authoritative for current implementation. The historical 18-file deployment and CI records are provenance only; refresh path/blob-SHA parity against current `main` before portfolio sign-off.
+The public remote is authoritative for current implementation. Exact staging-to-remote path/blob-SHA parity is verified: 20 staged product files, 20 remote product files, zero missing, extra or differing blobs. The STAGING-STATUS.md file is included in this parity comparison.
 
-## Remediation in progress
+## Remediation completed
 
-Registered capability declarations are now copied into immutable attribute mappings, preventing caller-side mutation after validation. Match requests are bounded to 128 requirements by default. Policy callback results must be explicit boolean `True`; false, non-boolean and exception outcomes deny candidates.
+Registered capability declarations are copied into immutable attribute mappings. Match requests are bounded to 128 requirements by default. Policy callback results must be explicit boolean `True`; false, non-boolean and exception outcomes deny candidates.
+
+Capability and Requirement now have normative Draft 2020-12 schemas. CI executes schema/model parity tests for identifier lengths, description and version constraints, attribute key/count/value limits and unknown properties. The pinned development validator is declared in requirements-dev.txt.
 
 ## Remaining verification
 
@@ -20,7 +23,6 @@ Registered capability declarations are now copied into immutable attribute mappi
 - Verify GitHub private vulnerability reporting/security advisory configuration; SECURITY.md records that no dedicated private reporting address is published.
 - Apply and verify GitHub About homepage/topics (description exists).
 - Verify branch rulesets/protection, Actions permissions, secret scanning, push protection and dependency alerts.
-- Refresh staging-to-remote path/blob-SHA parity.
 - Retain pending license status until an explicit repository/artifact licensing decision is approved.
 
 ## Maturity and limitations
