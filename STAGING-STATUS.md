@@ -1,9 +1,28 @@
-# Repository 15 deployment status
+# Repository 15 deployment and audit status
 
-Public repository created and verified: https://github.com/PCakes303/agent-capability-registry (default branch `main`). All 18 staged files have been deployed. CI passed on Python 3.10, 3.11 and 3.12: https://github.com/PCakes303/agent-capability-registry/actions/runs/41413329389.
+**Repository:** [PCakes303/agent-capability-registry](https://github.com/PCakes303/agent-capability-registry)  
+**Audited baseline:** `0220f7ecc89589b9ccd256a705188d7ff27d1371`  
+**Baseline CI:** [Run 41413613566](https://github.com/PCakes303/agent-capability-registry/actions/runs/41413613566) — success  
+**Staging source:** `provisioning/staged/agent-capability-registry/` in the master repository.
 
-The implementation includes strict capability declaration validation, a bounded process-local registry, exact-match requirement filters, same-agent coverage for multi-capability requests, deterministic results, and a fail-closed policy callback. Matching is advisory; declarations are not attestations, and the callback is not a production authorization service.
+## Current deployment record
 
-Not included: cryptographic attestation, identity lifecycle integration, production policy adapter, distributed storage, network APIs, health/reputation scoring, execution scheduling, or cross-repository conformance. Dependency states remain `declared`, not `tested`. No GitHub Release is published. License selection remains pending review.
+The public remote exists and is authoritative for current implementation. The historical 18-file deployment and CI records are provenance only; refresh path/blob-SHA parity against current `main` before portfolio sign-off.
 
-Next gates: add schema-registry, resource-manifest and policy-engine integration fixtures; expand adversarial/property-based tests; define package metadata and release criteria.
+## Remediation in progress
+
+Registered capability declarations are now copied into immutable attribute mappings, preventing caller-side mutation after validation. Match requests are bounded to 128 requirements by default. Policy callback results must be explicit boolean `True`; false, non-boolean and exception outcomes deny candidates.
+
+## Remaining verification
+
+- Bind capability declarations to Resource Manifest and Schema Registry canonical contracts; pin compatible versions and publish reproducible cross-repository fixtures.
+- Connect policy callback to an authenticated policy service; it remains a test/integration seam.
+- Verify GitHub private vulnerability reporting/security advisory configuration; SECURITY.md records that no dedicated private reporting address is published.
+- Apply and verify GitHub About homepage/topics (description exists).
+- Verify branch rulesets/protection, Actions permissions, secret scanning, push protection and dependency alerts.
+- Refresh staging-to-remote path/blob-SHA parity.
+- Retain pending license status until an explicit repository/artifact licensing decision is approved.
+
+## Maturity and limitations
+
+This remains an experimental process-local registry. Matching is advisory only; it does not authenticate agents, prove capability claims, grant permissions, execute work, verify health or provide distributed discovery/consistency. No release is published.
