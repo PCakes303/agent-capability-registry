@@ -11,6 +11,13 @@ python -m pip install -r requirements-dev.txt
 python -m unittest discover -s tests -v
 ```
 
+Development validation:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m unittest discover -s tests -v
+```
+
 Quick start:
 
 ```python
